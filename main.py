@@ -28,6 +28,6 @@ class Area:
         return self.name
 
 
-areas = [Area(), Area("Room")]
+areas = [Area("Jungle hut"), Area("River path")]
 
 [print(x) for x in areas]
