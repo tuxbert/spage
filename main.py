@@ -10,6 +10,8 @@ functionality relating to characters, objects, scenery, dialogue, areas, etc.
 import pygame
 
 areas = []
+characters = []
+
 
 class Area:
     """
@@ -28,6 +30,22 @@ class Area:
         return self.name
 
 
-areas = [Area("Jungle hut"), Area("River path")]
+class Character:
+    """
+    A generic character who may travel and talk on screen.
+    """
+    def __init__(self, name):
+        """
+        Creates a character.
+        """
+        self.name = name
+    
+    def __str__(self):
+        return self.name
+
+
+areas.extend([Area("Jungle hut"), Area("River path")])
+characters.extend([Character("Fred"), Character("Ned")])
+
 
 [print(x) for x in areas]
