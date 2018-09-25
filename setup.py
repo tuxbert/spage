@@ -5,7 +5,7 @@ from setuptools import setup
 
 
 package_name = 'spage'
-filename = f'spage/{package_name}.py'
+filename = f'spage/__init__.py'
 
 
 def get_version():
