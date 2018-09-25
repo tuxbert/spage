@@ -9,6 +9,8 @@ functionality relating to characters, objects, scenery, dialogue, areas, etc.
 '''
 
 import pygame
+print("Importing pygame")
+
 import objects
 
 
