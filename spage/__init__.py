@@ -8,7 +8,12 @@ functionality relating to characters, objects, scenery, dialogue, areas, etc.
 
 '''
 
-import pygame
+import contextlib
+
+# Suppresses printed output from importing pygame
+with contextlib.redirect_stdout(None):
+    import pygame
+
 import spage.objects
 
 
