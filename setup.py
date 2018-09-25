@@ -33,11 +33,11 @@ setup(
     description='SPAGE',
     url='https://github.com/tuxbert/spage',
     long_description=get_long_description(),
-    py_modules=[package_name],
-    # entry_points={
-    #     'console_scripts': [
-    #         'spage = spage:main'
-    #     ]
-    # },
+    packages=[package_name],
+    entry_points={
+        'console_scripts': [
+            'spage = spage:spage'
+        ]
+    },
     license='License :: OSI Approved :: MIT License',
 )
