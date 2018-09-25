@@ -15,38 +15,3 @@ with contextlib.redirect_stdout(None):
     import pygame
 
 import spage.objects
-
-
-class Area:
-    """
-    Consists of various planes on which the user may exist.
-    """
-    def __init__(self, area_id):
-        """
-        Creates an area.
-        """
-        self.id = area_id
-    
-    def __str__(self):
-        """
-        Returns the area_id.
-        """
-        return self.id
-
-
-class Character:
-    """
-    A generic character who may travel and talk on screen.
-    """
-    def __init__(self, character_id):
-        """
-        Creates a character.
-        """
-        
-        self.id = character_id
-    
-    def __str__(self):
-        """
-        Returns the character_id
-        """
-        return self.id

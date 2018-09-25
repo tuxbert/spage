@@ -8,6 +8,43 @@ objects within the SPAGE environment.
 areas = []
 characters = []
 
+
+class Area:
+    """
+    Consists of various planes on which the user may exist.
+    """
+    def __init__(self, area_id):
+        """
+        Creates an area.
+        """
+        self.id = area_id
+    
+    def __str__(self):
+        """
+        Returns the area_id.
+        """
+        return self.id
+
+
+class Character:
+    """
+    A generic character who may travel and talk on screen.
+    """
+    def __init__(self, character_id, name):
+        """
+        Creates a character.
+        """
+        self.id = character_id
+        self.name = name
+        self.area = None
+    
+    def __str__(self):
+        """
+        Returns the character_id
+        """
+        return self.id
+
+
 def find_character(character_id):
     """
     Returns the character object given the character_id provided.
@@ -27,3 +64,16 @@ def character_exists(character_id):
             return True
     
     return False
+
+def create_character(character_id, name=None):
+    """
+    Adds a character to the list of characters.
+    """
+    if character_exists(character_id):
+        raise ValueError(f"Character with id {character_id} already created.")
+    
+    new_character = Character(
+        character_id=character_id,
+        name=name if name else character_id
+        )
+    characters.append(new_character)
