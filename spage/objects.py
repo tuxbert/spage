@@ -40,9 +40,17 @@ class Character:
     
     def __str__(self):
         """
-        Returns the character_id
+        Returns the character_id.
         """
         return self.id
+    
+    def set_details(self, img_path, **kwargs):
+        """
+        Takes a variety of inputs and stores them as character values. Usually
+        performed immediately after initialization.
+        """
+        self.img_path = img_path
+        self.area = kwargs.get('area', None)
 
 
 def find_character(character_id):
@@ -77,3 +85,36 @@ def create_character(character_id, name=None):
         name=name if name else character_id
         )
     characters.append(new_character)
+
+def find_area(area_id):
+    """
+    Returns the area object given the area_id provided.
+    """
+    for area in areas:
+        if area.id == area_id:
+            return area
+    
+    raise ValueError(f"No Area defined with id: {area_id}")
+
+def area_exists(area_id):
+    """
+    Returns a boolean corresponding to the area_id provided.
+    """
+    for area in areas:
+        if area.id == area_id:
+            return True
+    
+    return False
+
+def create_area(area_id, name=None):
+    """
+    Adds an area to the list of areas.
+    """
+    if area_exists(area_id):
+        raise ValueError(f"Area with id {area_id} already created.")
+    
+    new_area = Area(
+        area_id=area_id,
+        name=name if name else area_id
+        )
+    areas.append(new_area)
