@@ -17,8 +17,8 @@ class Area:
         """
         Creates an area.
         """
-        self.id = kwargs.get('id')
-        self.name = kwargs.get('name')
+        self.id = kwargs['area_id']
+        self.name = kwargs['name']
     
     def __str__(self):
         """
@@ -35,9 +35,9 @@ class Character:
         """
         Creates a character.
         """
-        self.id = kwargs.get('character_id')
-        self.name = kwargs.get('name')
-        self.area = kwargs.get('area')
+        self.id = kwargs.get['character_id']
+        self.name = kwargs.get['name']
+        self.area = kwargs.get['area']
     
     def __str__(self):
         """
@@ -83,7 +83,7 @@ def create_character(character_id, **kwargs):
     new_character = {
         'character_id': character_id,
         'name': kwargs.get('name', character_id),
-        'area': kwargs.get('area', None)
+        'area': kwargs.get('area')
         }
     
     characters.append(Character(**new_character))
@@ -103,6 +103,7 @@ def area_exists(area_id):
     Returns a boolean corresponding to the area_id provided.
     """
     for area in areas:
+        print(area.id)
         if area.id == area_id:
             return True
     
