@@ -35,9 +35,9 @@ class Character:
         """
         Creates a character.
         """
-        self.id = kwargs.get['character_id']
-        self.name = kwargs.get['name']
-        self.area = kwargs.get['area']
+        self.id = kwargs['character_id']
+        self.name = kwargs['name']
+        self.area = kwargs['area']
     
     def __str__(self):
         """
