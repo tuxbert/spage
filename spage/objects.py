@@ -13,17 +13,18 @@ class Area:
     """
     Consists of various planes on which the user may exist.
     """
-    def __init__(self, area_id):
+    def __init__(self, area_id, name):
         """
         Creates an area.
         """
         self.id = area_id
+        self.name = name
     
     def __str__(self):
         """
-        Returns the area_id.
+        Returns the name of the area.
         """
-        return self.id
+        return self.name
 
 
 class Character:
@@ -40,9 +41,9 @@ class Character:
     
     def __str__(self):
         """
-        Returns the character_id.
+        Returns the name of the character.
         """
-        return self.id
+        return self.name
     
     def set_details(self, img_path, **kwargs):
         """
