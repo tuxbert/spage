@@ -13,12 +13,12 @@ class Area:
     """
     Consists of various planes on which the user may exist.
     """
-    def __init__(self, area_id, name):
+    def __init__(self, **kwargs):
         """
         Creates an area.
         """
-        self.id = area_id
-        self.name = name
+        self.id = kwargs.get('id')
+        self.name = kwargs.get('name')
     
     def __str__(self):
         """
@@ -31,13 +31,13 @@ class Character:
     """
     A generic character who may travel and talk on screen.
     """
-    def __init__(self, character_id, name):
+    def __init__(self, **kwargs):
         """
         Creates a character.
         """
-        self.id = character_id
-        self.name = name
-        self.area = None
+        self.id = kwargs.get('character_id')
+        self.name = kwargs.get('name')
+        self.area = kwargs.get('area')
     
     def __str__(self):
         """
@@ -51,7 +51,6 @@ class Character:
         performed immediately after initialization.
         """
         self.img_path = img_path
-        self.area = kwargs.get('area', None)
 
 
 def find_character(character_id):
@@ -81,12 +80,13 @@ def create_character(character_id, **kwargs):
     if character_exists(character_id):
         raise ValueError(f"Character with id {character_id} already created.")
     
-    new_character = Character(
-        character_id=character_id,
-        name=kwargs.get('name', character_id)
-        )
+    new_character = {
+        'character_id': character_id,
+        'name': kwargs.get('name', character_id),
+        'area': kwargs.get('area', None)
+        }
     
-    characters.append(new_character)
+    characters.append(Character(**new_character))
 
 def find_area(area_id):
     """
@@ -115,9 +115,7 @@ def create_area(area_id, **kwargs):
     if area_exists(area_id):
         raise ValueError(f"Area with id {area_id} already created.")
     
-    new_area = Area(
-        area_id=area_id,
-        name=kwargs.get('name', area_id)
-        )
-    
-    areas.append(new_area)
+    new_area = {
+        'area_id': area_id,
+        'name': kwargs.get('name', area_id)}
+    areas.append(Area(**new_area))
