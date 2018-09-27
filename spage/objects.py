@@ -5,9 +5,12 @@ objects within the SPAGE environment.
 
 '''
 
+import pygame
+
+from spage.locals import *
+
 areas = []
 characters = []
-
 
 class Area:
     """
@@ -91,7 +94,8 @@ def create_character(character_id, **kwargs):
     new_character = {
         'character_id': character_id,
         'name': kwargs.get('name', character_id),
-        'area': kwargs.get('area')
+        'area': kwargs.get('area'),
+        'img_path': kwargs.get('img_path', f'{img_path}/{character_id}')
         }
     
     characters.append(Character(**new_character))
