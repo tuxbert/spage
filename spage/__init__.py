@@ -40,4 +40,4 @@ if __name__ == '__main__':
     print(f"Does Bedroom exist? {found_bedroom}")
     print(f"Does Lab exist? {found_lab}")
 
-del spage
+del spage.locals, spage
