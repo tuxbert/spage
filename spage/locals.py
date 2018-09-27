@@ -1,1 +1,1 @@
-img_path = "a/path/to/use"
+from spage.directories import *
