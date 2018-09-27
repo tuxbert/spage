@@ -17,6 +17,12 @@ with contextlib.redirect_stdout(None):
 
 import spage.objects
 
+def change_img_path(new_path):
+    """
+    Changes the image path.
+    """
+    spage.locals.img_path = new_path
+
 if __name__ == '__main__':
     
     img_path = "imgs"
@@ -33,3 +39,5 @@ if __name__ == '__main__':
     print(f"Does Fred exist? {found_fred}")
     print(f"Does Bedroom exist? {found_bedroom}")
     print(f"Does Lab exist? {found_lab}")
+
+del spage
