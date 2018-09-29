@@ -9,6 +9,7 @@ functionality relating to characters, objects, scenery, dialogue, areas, etc.
 '''
 
 import contextlib
+import os
 
 # Suppresses printed output from importing pygame
 with contextlib.redirect_stdout(None):
@@ -23,16 +24,18 @@ def game_name(name):
     """
     pygame.display.set_caption(name)
 
-def change_img_path(new_path):
+def set_img_path(new_path):
     """
     Changes the image path.
     """
+    check_path(new_path)
     spage.locals.img_path = new_path
 
-def change_character_img_path(new_path):
+def set_character_img_path(new_path):
     """
     Changes the character image path.
     """
+    check_path(new_path)
     spage.locals.character_img_path = new_path
 
 del spage

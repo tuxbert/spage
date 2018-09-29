@@ -55,6 +55,9 @@ class Character:
         self.id = kwargs['character_id']
         self.name = kwargs['name']
         self.area = kwargs['area']
+        
+        # Checks that the path is a valid image path
+        directories.check_path(kwargs['img_path'])
         self.img_path = kwargs['img_path']
     
     def __str__(self):
