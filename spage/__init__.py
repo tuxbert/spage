@@ -16,7 +16,7 @@ with contextlib.redirect_stdout(None):
     import pygame
 
 import spage.objects
-from spage.directories import *
+import spage.directories
 
 def game_name(name):
     """
@@ -28,14 +28,14 @@ def set_img_path(new_path):
     """
     Changes the image path.
     """
-    check_path(new_path)
+    spage.directories.check_path(new_path)
     spage.directories.img_path = new_path
 
 def set_character_img_path(new_path):
     """
     Changes the character image path.
     """
-    check_path(new_path)
+    spage.directories.check_path(new_path)
     spage.directories.character_img_path = new_path
 
 def get_img_path():
