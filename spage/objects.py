@@ -1,6 +1,6 @@
 '''
 
-The 'objects', accessed by spage.objects module allows functionality regarding
+The 'objects', accessed by spage.objects, module allows functionality regarding
 objects within the SPAGE environment.
 
 '''
@@ -9,6 +9,7 @@ import os.path as path
 import pygame
 
 import spage.directories as directories
+import spage.errors as errors
 
 areas = []
 characters = []
@@ -21,6 +22,10 @@ class Area:
         """
         Creates an area.
         """
+        # Checks that no argument failed to be created.
+        mandatory_arguments = {'area_id', 'name'}
+        errors.check_mandatory_kwargs(mandatory_arguments, **kwargs)
+        
         self.id = kwargs['area_id']
         self.name = kwargs['name']
     
@@ -41,10 +46,7 @@ class Character:
         """
         # Checks that no argument failed to be created.
         mandatory_arguments = {'character_id', 'name', 'area', 'img_path'}
-        keys = set(kwargs.keys())
-        if not mandatory_arguments.issubset(keys):
-            first_missing = next(iter(mandatory_arguments.difference(keys)))
-            raise TypeError(f'Missing argument: {first_missing}')
+        errors.check_mandatory_kwargs(mandatory_arguments, **kwargs)
         
         self.id = kwargs['character_id']
         self.name = kwargs['name']
@@ -78,10 +80,15 @@ def character_exists(character_id):
     
     return False
 
-def create_character(*, character_id, **kwargs):
+def create_character(**kwargs):
     """
     Adds a character to the list of characters.
     """
+    # Checks that no argument failed to be created.
+    mandatory_arguments = {'character_id'}
+    errors.check_mandatory_kwargs(mandatory_arguments, **kwargs)
+    
+    character_id = kwargs['character_id']
     if character_exists(character_id):
         raise ValueError(f"Character with id {character_id} already created.")
     
@@ -95,8 +102,6 @@ def create_character(*, character_id, **kwargs):
                 )
             )
         }
-    
-    
     
     characters.append(Character(**new_character))
 
@@ -124,6 +129,10 @@ def create_area(*, area_id, **kwargs):
     """
     Adds an area to the list of areas.
     """
+    # Checks that no argument failed to be created.
+    mandatory_arguments = {'area_id'}
+    errors.check_mandatory_kwargs(mandatory_arguments, **kwargs)
+    
     if area_exists(area_id):
         raise ValueError(f'Area with id {area_id} already created.')
     
