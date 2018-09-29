@@ -36,6 +36,18 @@ def set_character_img_path(new_path):
     Changes the character image path.
     """
     check_path(new_path)
-    spage.locals.character_img_path = new_path
+    spage.directories.character_img_path = new_path
+
+def get_img_path():
+    """
+    Returns the image path.
+    """
+    return spage.directories.img_path
+
+def get_character_img_path():
+    """
+    Returns the character image path.
+    """
+    return spage.directories.character_img_path
 
 del spage
