@@ -9,7 +9,7 @@ functionality relating to characters, objects, scenery, dialogue, areas, etc.
 '''
 
 import contextlib
-from spage.locals import *
+from spage.directories import *
 
 # Suppresses printed output from importing pygame
 with contextlib.redirect_stdout(None):

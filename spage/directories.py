@@ -1,1 +1,1 @@
-img_path = "a/path/to/use"
+img_path = None

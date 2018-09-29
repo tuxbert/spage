@@ -5,9 +5,10 @@ objects within the SPAGE environment.
 
 '''
 
+import os.path as path
 import pygame
 
-from spage.locals import *
+import spage.directories as directories
 
 areas = []
 characters = []
@@ -55,13 +56,6 @@ class Character:
         Returns the name of the character.
         """
         return self.name
-    
-    def set_details(self, img_path, **kwargs):
-        """
-        Takes a variety of inputs and stores them as character values. Usually
-        performed immediately after initialization.
-        """
-        self.img_path = img_path
 
 
 def find_character(character_id):
@@ -95,7 +89,9 @@ def create_character(character_id, **kwargs):
         'character_id': character_id,
         'name': kwargs.get('name', character_id),
         'area': kwargs.get('area'),
-        'img_path': kwargs.get('img_path', f'{img_path}/{character_id}')
+        'img_path': kwargs.get('img_path',
+                               path.join(directories.img_path, character_id) if
+                               directories.img_path else None)
         }
     
     characters.append(Character(**new_character))
