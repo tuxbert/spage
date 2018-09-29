@@ -9,13 +9,13 @@ functionality relating to characters, objects, scenery, dialogue, areas, etc.
 '''
 
 import contextlib
-from spage.directories import *
 
 # Suppresses printed output from importing pygame
 with contextlib.redirect_stdout(None):
     import pygame
 
 import spage.objects
+from spage.directories import *
 
 def change_img_path(new_path):
     """
@@ -40,4 +40,4 @@ if __name__ == '__main__':
     print(f"Does Bedroom exist? {found_bedroom}")
     print(f"Does Lab exist? {found_lab}")
 
-del spage.locals, spage
+del spage
