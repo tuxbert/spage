@@ -23,8 +23,10 @@ class Area:
         Creates an area.
         """
         # Checks that no argument failed to be created.
-        mandatory_arguments = {'area_id', 'name'}
-        errors.check_mandatory_kwargs(mandatory_arguments, **kwargs)
+        mandatory_kwargs = {'area_id', 'name'}
+        
+        errors.check_mandatory_kwargs(mandatory_kwargs, **kwargs)
+        errors.check_extraneous_kwargs(mandatory_kwargs, set(), **kwargs)
         
         self.id = kwargs['area_id']
         self.name = kwargs['name']
@@ -45,8 +47,10 @@ class Character:
         Creates a character.
         """
         # Checks that no argument failed to be created.
-        mandatory_arguments = {'character_id', 'name', 'area', 'img_path'}
-        errors.check_mandatory_kwargs(mandatory_arguments, **kwargs)
+        mandatory_kwargs = {'character_id', 'name', 'area', 'img_path'}
+        
+        errors.check_mandatory_kwargs(mandatory_kwargs, **kwargs)
+        errors.check_extraneous_kwargs(mandatory_kwargs, set(), **kwargs)
         
         self.id = kwargs['character_id']
         self.name = kwargs['name']
@@ -85,8 +89,11 @@ def create_character(**kwargs):
     Adds a character to the list of characters.
     """
     # Checks that no argument failed to be created.
-    mandatory_arguments = {'character_id'}
-    errors.check_mandatory_kwargs(mandatory_arguments, **kwargs)
+    mandatory_kwargs = {'character_id'}
+    optional_kwargs = {'name', 'area', 'img_path'}
+    
+    errors.check_mandatory_kwargs(mandatory_kwargs, **kwargs)
+    errors.check_extraneous_kwargs(mandatory_kwargs, optional_kwargs, **kwargs)
     
     character_id = kwargs['character_id']
     if character_exists(character_id):
@@ -103,7 +110,9 @@ def create_character(**kwargs):
             )
         }
     
-    characters.append(Character(**new_character))
+    new_character = Character(**new_character)
+    characters.append(new_character)
+    return new_character
 
 def find_area(area_id):
     """
@@ -130,8 +139,10 @@ def create_area(**kwargs):
     Adds an area to the list of areas.
     """
     # Checks that no argument failed to be created.
-    mandatory_arguments = {'area_id'}
-    errors.check_mandatory_kwargs(mandatory_arguments, **kwargs)
+    mandatory_kwargs = {'area_id'}
+    optional_kwargs = {'name'}
+    errors.check_mandatory_kwargs(mandatory_kwargs, **kwargs)
+    errors.check_extraneous_kwargs(mandatory_kwargs, optional_kwargs **kwargs)
     
     area_id = kwargs['area_id']
     if area_exists(area_id):
@@ -141,4 +152,7 @@ def create_area(**kwargs):
         'area_id': area_id,
         'name': kwargs.get('name', area_id)
         }
-    areas.append(Area(**new_area))
+    
+    new_area = Area(**new_area)
+    areas.append(new_area)
+    return new_area
