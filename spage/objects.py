@@ -125,7 +125,7 @@ def area_exists(area_id):
     
     return False
 
-def create_area(*, area_id, **kwargs):
+def create_area(**kwargs):
     """
     Adds an area to the list of areas.
     """
@@ -133,10 +133,12 @@ def create_area(*, area_id, **kwargs):
     mandatory_arguments = {'area_id'}
     errors.check_mandatory_kwargs(mandatory_arguments, **kwargs)
     
+    area_id = kwargs['area_id']
     if area_exists(area_id):
         raise ValueError(f'Area with id {area_id} already created.')
     
     new_area = {
         'area_id': area_id,
-        'name': kwargs.get('name', area_id)}
+        'name': kwargs.get('name', area_id)
+        }
     areas.append(Area(**new_area))
