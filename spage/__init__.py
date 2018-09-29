@@ -29,7 +29,7 @@ def set_img_path(new_path):
     Changes the image path.
     """
     check_path(new_path)
-    spage.locals.img_path = new_path
+    spage.directories.img_path = new_path
 
 def set_character_img_path(new_path):
     """
