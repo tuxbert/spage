@@ -78,7 +78,7 @@ def character_exists(character_id):
     
     return False
 
-def create_character(character_id, **kwargs):
+def create_character(*, character_id, **kwargs):
     """
     Adds a character to the list of characters.
     """
@@ -89,10 +89,14 @@ def create_character(character_id, **kwargs):
         'character_id': character_id,
         'name': kwargs.get('name', character_id),
         'area': kwargs.get('area'),
-        'img_path': kwargs.get('img_path',
-                               path.join(directories.img_path, character_id) if
-                               directories.img_path else None)
+        'img_path': kwargs.get(
+            'img_path', path.join(
+                directories.character_img_path, character_id
+                )
+            )
         }
+    
+    
     
     characters.append(Character(**new_character))
 
@@ -116,7 +120,7 @@ def area_exists(area_id):
     
     return False
 
-def create_area(area_id, **kwargs):
+def create_area(*, area_id, **kwargs):
     """
     Adds an area to the list of areas.
     """
