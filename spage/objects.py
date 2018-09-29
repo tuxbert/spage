@@ -142,7 +142,7 @@ def create_area(**kwargs):
     mandatory_kwargs = {'area_id'}
     optional_kwargs = {'name'}
     errors.check_mandatory_kwargs(mandatory_kwargs, **kwargs)
-    errors.check_extraneous_kwargs(mandatory_kwargs, optional_kwargs **kwargs)
+    errors.check_extraneous_kwargs(mandatory_kwargs, optional_kwargs, **kwargs)
     
     area_id = kwargs['area_id']
     if area_exists(area_id):
