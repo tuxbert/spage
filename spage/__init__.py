@@ -49,5 +49,3 @@ def get_character_img_path():
     Returns the character image path.
     """
     return spage.directories.character_img_path
-
-del spage.locals
