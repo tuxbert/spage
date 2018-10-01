@@ -50,4 +50,4 @@ def get_character_img_path():
     """
     return spage.directories.character_img_path
 
-del spage
+del spage.locals
