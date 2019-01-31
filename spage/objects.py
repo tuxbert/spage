@@ -16,8 +16,10 @@ class Area:
     """
     Consists of various planes on which the user may exist.
     """
-
-    def __init__(self, area_id: str, name: str, **kwargs):
+    def __init__(
+            self, area_id: str, name: str, camera_height: float,
+            camera_dist, **kwargs
+            ):
         """
         Creates an area.
         """
@@ -25,6 +27,8 @@ class Area:
 
         self.id: str = area_id
         self.name: str = name
+        self.camera_height: float = camera_height
+        self.camera_dist: float = camera_dist
 
     def __str__(self):
         """
@@ -37,7 +41,6 @@ class Character:
     """
     A generic character who may travel and talk on screen.
     """
-
     def __init__(
             self,
             character_id: str,
@@ -136,20 +139,21 @@ def area_exists(area_id):
     return False
 
 
-def create_area(**kwargs):
+def create_area(area_id: str, **kwargs):
     """
     Adds an area to the list of areas.
     """
     optional_kwargs = {'name'}
     errors.check_extraneous_kwargs(optional_kwargs, **kwargs)
 
-    area_id = kwargs['area_id']
     if area_exists(area_id):
         raise ValueError(f'Area with id {area_id} already created.')
 
     new_area = {
         'area_id': area_id,
-        'name': kwargs.get('name', area_id)
+        'name': kwargs.get('name', area_id),
+        'camera_height': kwargs.get('camera_height', 3),
+        'camera_dist': kwargs.get('camera_dist', 3)
     }
 
     new_area = Area(**new_area)
