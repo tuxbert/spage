@@ -5,6 +5,9 @@ event-handling within the SPAGE environment.
 
 """
 
+from typing import List
+import pygame
+
 
 def get() -> List[pygame.event.EventType]:
     """
