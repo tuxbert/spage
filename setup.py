@@ -34,10 +34,11 @@ setup(
     url='https://github.com/tuxbert/spage',
     long_description=get_long_description(),
     packages=[package_name],
-    entry_points={
-        'console_scripts': [
+    entry_points=dict(
+        console_scripts=[
             'spage = spage:spage'
         ]
-    },
-    license='License :: OSI Approved :: MIT License',
+    ),
+    install_requires=['pygame'],
+    license='License :: OSI Approved :: MIT License'
 )
